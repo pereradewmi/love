@@ -27,15 +27,17 @@ enterBtn.addEventListener("click", () => {
     document.body.classList.remove("locked");
 
     // Try to start music after user interaction
-    music.play()
-        .then(() => {
-            if (musicBtn) {
-                musicBtn.classList.add("active");
-            }
-        })
-        .catch(() => {
-            console.log("Music autoplay blocked.");
-        });
+    if (music) {
+        music.play()
+            .then(() => {
+                if (musicBtn) {
+                    musicBtn.classList.add("active");
+                }
+            })
+            .catch(() => {
+                console.log("Music autoplay blocked.");
+            });
+    }
 
 });
 
@@ -44,7 +46,7 @@ enterBtn.addEventListener("click", () => {
 // MUSIC
 // =====================================================
 
-if (musicBtn) {
+if (musicBtn && music) {
     musicBtn.addEventListener("click", () => {
 
         if (music.paused) {
